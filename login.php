@@ -30,6 +30,7 @@
 	$loginPasswordError = "";
 	$signupEmail = "";
 	$signupGender = "";
+	$loginEmail = "";
 	
 	// on üldse olemas selline muutja
 	if( isset( $_POST["signupEmail"] ) ){
