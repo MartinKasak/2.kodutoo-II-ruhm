@@ -175,7 +175,7 @@
 		<label>E-post</label>
 		<br>
 		
-		<input name="loginEmail" type="text"> <?php echo "<font color='red'>$loginEmailError</font>";?>
+		<input name="loginEmail" type="text" value="<?=$loginEmail;?>"> <?php echo "<font color='red'>$loginEmailError</font>";?>
 		
 			<br><br>
 			

@@ -1,6 +1,6 @@
 <?php
 	//functions.php
-	require("../../../config.php");
+	require("../../config.php");
 	//var_dump($GLOBALS);
 	// see fail peab olema kõigil lehtedel kus tahan kasutada session muutujat
 	session_start();
@@ -90,16 +90,16 @@
 		
 	}
 	
-	function saveCar ($plate, $color){
+	function saveCar ($paev, $harjutus, $minutid){
 			
 		$database = "if16_martkasa";
 		$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $database);
 
-		$stmt = $mysqli->prepare("INSERT INTO cars_and_colors (plate, color) VALUES (?, ?)");
+		$stmt = $mysqli->prepare("INSERT INTO workout (paev, harjutus, minutid) VALUES (?, ?, ?)");
 	
 		echo $mysqli->error;
 		
-		$stmt->bind_param("ss",$plate, $color );
+		$stmt->bind_param("ssi",$paev, $harjutus, $minutid );
 		
 		if($stmt->execute()) {
 			echo "salvestamine õnnestus";
@@ -112,21 +112,21 @@
 		
 	}
 	
-	function getAllCars(){
+	function getAllWorkout(){
 		
 		$database = "if16_martkasa";
 		$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $database);
 		
 		$stmt = $mysqli->prepare("
 		
-			SELECT id, plate, color 
-			FROM cars_and_colors
+			SELECT id, paev, harjutus, minutid 
+			FROM workout
 			
 		");
 		
 		echo $mysqli->error;
 		
-		$stmt->bind_result($id, $plate, $color);
+		$stmt->bind_result($id, $paev, $harjutus, $minutid);
 		$stmt->execute();
 		
 		//tekitan massiivi
@@ -137,17 +137,17 @@
 		while ($stmt->fetch()) {
 			
 			//tekitan objekti 
-			$car = new StdClass();
+			$workout = new StdClass();
 			
-			$car->id = $id;
-			$car->plate = $plate;
-			$car->carColor = $color;
-			
+			$workout->id = $id;
+			$workout->paev = $paev;
+			$workout->harjutus = $harjutus;
+			$workout->minutid = $minutid;
 			
 			
 			//echo $plate."<br>";
 			//igakord massiivi lisanm juurse nr märgi
-			array_push($result, $car);
+			array_push($result, $workout);
 		}
 		
 		$stmt->close();
