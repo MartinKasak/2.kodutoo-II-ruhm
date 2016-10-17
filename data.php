@@ -30,13 +30,15 @@
 
 	
 		
-	if ( isset($_POST["plate"]) && 
-		isset($_POST["plate"]) && 
-		!empty($_POST["color"]) && 
-		!empty($_POST["color"])
+	if ( isset($_POST["paev"]) && 
+		isset($_POST["harjutus"]) &&
+		isset($_POST["minutid"])&&
+		!empty($_POST["paev"]) && 
+		!empty($_POST["harjutus"])&&
+		!empty($_POST["minutid"])
 	  ) {
 		  
-		saveWorkout(cleanInput($_POST["paev"]), $_POST["harjutus"], $_POST["harjutus"]);
+		saveWorkout($_POST["paev"], $_POST["harjutus"], $_POST["minutid"]);
 		
 	}
 	//saan kõik auto andmed
