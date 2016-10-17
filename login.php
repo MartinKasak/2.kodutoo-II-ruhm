@@ -96,7 +96,7 @@
 		//jah on olemas, kas on tühi
 		if( empty( $_POST["loginPassword"] ) ){
 			
-			$loginEmailError = "Salasõna on kohustuslik";
+			$loginPasswordError = "Salasõna on kohustuslik";
 			
 		} else {
 			
@@ -175,11 +175,11 @@
 		<label>E-post</label>
 		<br>
 		
-		<input name="loginEmail" type="text" value="<?=$loginEmail;?>"> <?php echo "<font color='red'>$loginEmailError</font>";?>
+		<input name="loginEmail" type="text" value="<?=$loginEmail;?>"> <?php  echo "<font color='red'>$loginEmailError</font>";?>
 		
 			<br><br>
 			
-			<input type="password" name="loginPassword" placeholder="Parool"> 
+			<input type="password" name="loginPassword" placeholder="Parool" > <?php echo "<font color = 'red'>$loginPasswordError</font>";?>
 		
 		<br><br>
 		
