@@ -48,20 +48,22 @@
 	
 ?>
 
-<H1>Data</H1>
+<H1>Treeninguplaan</H1>
 <?=$msg;?>
 
 <p>Tere tulemast <?=$_SESSION["userEmail"];?> ! <a href= "?logout=1">Logi välja</a> </p>
 <form method="POST">
-<h2>Salvesta harjutuse paev</h2><input type="text" name="paev" >
-<h2>Salvesta harjutuse nimi</h2> <input type="text" name="harjutus" >
-<h2>Sisesta minutid</h2> <input type="text" name="minutid" >
+
+<h3>Andmete sisestamine</h3>
+<label>Salvesta kuupäev</label><br><input type="text" name="paev" placeholder= "päev/kuu/aasta" ><br>
+<label>Salvesta harjutuse nimi</label> <br> <input type="text" placeholder = "Nt 'ujumine'" name="harjutus" >
+<label>Sisesta minutid</label><br> <input type="text" name="minutid" >
 <br><br>
 <input type="submit" value="Salvesta andmed">
 
 </form>
 
-<h2>Autod</h2>
+<h2>Treeningu tabel</h2>
 
 <?php
 	
