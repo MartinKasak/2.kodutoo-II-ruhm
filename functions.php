@@ -90,7 +90,7 @@
 		
 	}
 	
-	function saveCar ($paev, $harjutus, $minutid){
+	function saveWorkout ($paev, $harjutus, $minutid){
 			
 		$database = "if16_martkasa";
 		$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $database);
