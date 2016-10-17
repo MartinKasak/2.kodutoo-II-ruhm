@@ -58,7 +58,7 @@
 
 <h3>Andmete sisestamine</h3>
 <label>Salvesta kuupäev</label><br><input type="text" name="paev" placeholder= "päev/kuu/aasta" ><br>
-<label>Salvesta harjutuse nimi</label> <br> <input type="text" placeholder = "Nt 'ujumine'" name="harjutus" >
+<label>Salvesta harjutuse nimi</label> <br> <input type="text" placeholder = "Nt 'ujumine'" name="harjutus" ><br>
 <label>Sisesta minutid</label><br> <input type="text" name="minutid" >
 <br><br>
 <input type="submit" value="Salvesta andmed">
