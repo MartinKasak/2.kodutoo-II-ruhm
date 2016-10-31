@@ -13,8 +13,6 @@
 		
 		$database = "if16_martkasa";
 		$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $database);
-		
-			
 		$stmt = $mysqli->prepare("INSERT INTO user_sample (email, password) VALUES (?, ?)");
 		
 		echo $mysqli->error;
@@ -90,16 +88,16 @@
 		
 	}
 	
-	function saveWorkout ($paev, $harjutus, $minutid){
+	function saveWorkout ($date, $excercise, $duration){
 			
 		$database = "if16_martkasa";
 		$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $database);
 
-		$stmt = $mysqli->prepare("INSERT INTO workout (paev, harjutus, minutid) VALUES (?, ?, ?)");
+		$stmt = $mysqli->prepare("INSERT INTO workout (date, excercise, duration) VALUES (?, ?, ?)");
 	
 		echo $mysqli->error;
 		
-		$stmt->bind_param("ssi",$paev, $harjutus, $minutid );
+		$stmt->bind_param("ssi",$date, $excercise, $duration );
 		
 		if($stmt->execute()) {
 			echo "salvestamine õnnestus";
@@ -119,14 +117,14 @@
 		
 		$stmt = $mysqli->prepare("
 		
-			SELECT id, paev, harjutus, minutid 
+			SELECT id, date, excercise, duration 
 			FROM workout
 			
 		");
 		
 		echo $mysqli->error;
 		
-		$stmt->bind_result($id, $paev, $harjutus, $minutid);
+		$stmt->bind_result($id, $date, $excercise, $duration);
 		$stmt->execute();
 		
 		//tekitan massiivi
@@ -140,9 +138,9 @@
 			$workout = new StdClass();
 			
 			$workout->id = $id;
-			$workout->paev = $paev;
-			$workout->harjutus = $harjutus;
-			$workout->minutid = $minutid;
+			$workout->date = $date;
+			$workout->excercise = $excercise;
+			$workout->duration = $duration;
 			
 			
 			//echo $plate."<br>";

@@ -30,15 +30,15 @@
 
 	
 		
-	if ( isset($_POST["paev"]) && 
-		isset($_POST["harjutus"]) &&
-		isset($_POST["minutid"])&&
-		!empty($_POST["paev"]) && 
-		!empty($_POST["harjutus"])&&
-		!empty($_POST["minutid"])
+	if ( isset($_POST["date"]) && 
+		isset($_POST["excercise"]) &&
+		isset($_POST["duration"])&&
+		!empty($_POST["date"]) && 
+		!empty($_POST["excercise"])&&
+		!empty($_POST["duration"])
 	  ) {
-		  
-		saveWorkout($_POST["paev"], $_POST["harjutus"], $_POST["minutid"]);
+		$new_date = date('Y-m-d', strtotime($_POST['date']));  
+		saveWorkout($_POST["date"], $_POST["excercise"], $_POST["duration"]);
 		
 	}
 	//saan kõik auto andmed
@@ -53,14 +53,15 @@
 <H1>Treeninguplaan</H1>
 <?=$msg;?>
 
-<p>Tere tulemast <?=$_SESSION["userEmail"];?> ! <a href= "?logout=1">Logi välja</a> </p>
+<p>Tere tulemast !<?=$_SESSION["userEmail"];?>  <a href= "?logout=1">Logi välja</a> </p>
 <form method="POST">
 
 <h3>Andmete sisestamine</h3>
-<label>Salvesta kuupäev</label><br><input type="text" name="paev" placeholder= "päev/kuu/aasta" ><br>
-<label>Salvesta harjutuse nimi</label> <br> <input type="text" placeholder = "Nt 'ujumine'" name="harjutus" ><br>
-<label>Sisesta minutid</label><br> <input type="text" placeholder = "Nt '15'"name="minutid" >
-<br><br>
+<label>Salvesta harjutuse nimi</label> <br> <input type="text" placeholder = "Nt 'ujumine'" name="excercise" ><br>
+<label>Sisesta minutid</label><br> <input type="text" placeholder = "Nt '15'"name="duration" ><br>
+<label>Salvesta kuupäev</label><br><input type="date" name="date"  ><br>
+
+<br>
 <input type="submit" value="Salvesta andmed">
 
 </form>
@@ -74,9 +75,9 @@
 	
 	$html .= "<tr>";
 		$html .= "<th>id</th>";
-		$html .= "<th>paev</th>";
-		$html .= "<th>harjutus</th>";
-		$html .= "<th>minutid</th>";
+		$html .= "<th>date</th>";
+		$html .= "<th>excercise</th>";
+		$html .= "<th>duration</th>";
 	$html .= "</tr>";
 	
 	//iga liikme kohta massiivis
@@ -85,9 +86,9 @@
 		//echo $c->plate."<br>";
 		$html .= "<tr>";
 			$html .= "<td>".$w->id."</td>";
-			$html .= "<td>".$w->paev."</td>";
-			$html .= "<td>".$w->harjutus."</td>";
-			$html .= "<td>".$w->minutid."</td>";
+			$html .= "<td>".$w->date."</td>";
+			$html .= "<td>".$w->excercise."</td>";
+			$html .= "<td>".$w->duration."</td>";
 			//$html .= "<td style ='background-color:".$c->carColor."'>".$c->carColor."</td>";
 		$html .= "</tr>";
 		
@@ -98,13 +99,7 @@
 	
 	$listhtml = "<br><br>";
 	
-	/*foreach($carData as $c){
-		
-		$listhtml .= "<h1 style='color:".$c->carColor."'>".$c->plate."</h1>";
-		$listhtml .="<p>color = ".$c->carColor."</p>";
-		
-	}
-	echo $listhtml;*/
+	
 	
 	
 	
