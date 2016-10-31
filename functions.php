@@ -172,29 +172,4 @@
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	/*function hello($firstname, $lastname) {
-		
-		return "Teretulemast".$firstname." ".$lastname;
-	}
-		
-	
-	echo "<br>";
-	echo hello("martin", "kasak");
-	echo"<br>";
-	echo hello ("juurikas", "tegelane")
-	*/
-	
-	
-	
-	
 ?>
