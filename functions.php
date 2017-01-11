@@ -9,16 +9,16 @@
 	//*****SIGNUP******
 	//****************
 	
-	function signUp($email, $password){
+	function signUp($email, $password,  $firstName, $lastName, $age, $weight,$gender){
 		
 		$database = "if16_martkasa";
 		$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $database);
-		$stmt = $mysqli->prepare("INSERT INTO user_sample (email, password) VALUES (?, ?)");
+		$stmt = $mysqli->prepare("INSERT INTO user_sample (email, password,  firstName, lastName, age, weight, gender) VALUES (?, ?, ?, ?, ?, ?, ?)");
 		
 		echo $mysqli->error;
 		
 		
-		$stmt->bind_param("ss", $email, $password);
+		$stmt->bind_param("sssssss", $email, $password, $firstName, $lastName, $age, $weight, $gender);
 		
 		
 		if($stmt->execute()) {

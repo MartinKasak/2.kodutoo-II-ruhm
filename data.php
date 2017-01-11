@@ -19,6 +19,15 @@
 		exit();
 	}
 	
+	
+	$excercise = "";
+	$excerciseError = "";
+	$date = "";
+	$dateError = "";
+	$duration= "";
+	$durationError = "";
+	
+	
 	$msg = "";
 	if(isset($_SESSION["message"])){
 		$msg = $_SESSION["message"];
@@ -27,7 +36,29 @@
 		//ferfeshi ei näitaks
 		unset($_SESSION["message"]); 
 	}
-
+	if( isset( $_POST["excercise"] ) ){
+		if( empty( $_POST["excercise"] ) ){
+			$excerciseError = "See väli on kohustuslik";
+		} else {
+			$excercise = $_POST["excercise"];
+		}
+	}
+	if( isset( $_POST["duration"] ) ){
+		if( empty( $_POST["duration"] ) ){
+			$durationError = "See väli on kohustuslik";
+		} else {
+			$duration = $_POST["duration"];
+		}
+	}
+	if( isset( $_POST["date"] ) ){
+		if( empty( $_POST["date"] ) ){
+			$dateError = "See väli on kohustuslik";
+		} else {
+			$date = $_POST["date"];
+		}
+	}
+	
+	
 	
 		
 	if ( isset($_POST["date"]) && 
@@ -50,16 +81,16 @@
 	
 ?>
 
-<H1>Treeninguplaan</H1>
+<H2>Treeninguplaan</H2>
 <?=$msg;?>
 
-<p>Tere tulemast !<?=$_SESSION["userEmail"];?>  <a href= "?logout=1">Logi välja</a> </p>
+<p>Tere tulemast !  <?=$_SESSION["userEmail"];?>  <a href= "?logout=1">Logi välja</a> </p>
 <form method="POST">
 
 <h3>Andmete sisestamine</h3>
-<label>Salvesta harjutuse nimi</label> <br> <input type="text" placeholder = "Nt 'ujumine'" name="excercise" ><br>
-<label>Sisesta minutid</label><br> <input type="text" placeholder = "Nt '15'"name="duration" ><br>
-<label>Salvesta kuupäev</label><br><input type="date" name="date"  ><br>
+<label>Salvesta harjutuse nimi</label> <br> <input type="text" placeholder = "Nt 'ujumine'" name="excercise" value = "<?=$excercise;?>" > <?php echo "<font color = 'red'>$excerciseError</font>";?><br>
+<label>Sisesta minutid</label><br> <input type="text" placeholder = "Nt '15'"name="duration" value = "<?=$duration;?>" > <?php echo "<font color = 'red'>$durationError</font>";?><br>
+<label>Salvesta kuupäev</label><br><input type="date" name="date"  ><?php echo "<font color = 'red'>$dateError</font>";?><br>
 
 <br>
 <input type="submit" value="Salvesta andmed">
@@ -78,6 +109,7 @@
 		$html .= "<th>date</th>";
 		$html .= "<th>excercise</th>";
 		$html .= "<th>duration</th>";
+		
 	$html .= "</tr>";
 	
 	//iga liikme kohta massiivis
@@ -89,6 +121,7 @@
 			$html .= "<td>".$w->date."</td>";
 			$html .= "<td>".$w->excercise."</td>";
 			$html .= "<td>".$w->duration."</td>";
+			
 			//$html .= "<td style ='background-color:".$c->carColor."'>".$c->carColor."</td>";
 		$html .= "</tr>";
 		
